@@ -12,7 +12,7 @@ export const SubmitButton = () => {
 
         try {
 
-            const response = await fetch('https://backend-d09660jjb-ashish23juns-projects.vercel.app/pipelines/parse', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000'}/pipelines/parse`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
