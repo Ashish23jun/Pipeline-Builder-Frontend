@@ -12,7 +12,7 @@ export const SubmitButton = () => {
 
         try {
 
-            const response = await fetch('http://localhost:8000/pipelines/parse', {
+            const response = await fetch('https://backend-d09660jjb-ashish23juns-projects.vercel.app/pipelines/parse', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,15 +41,15 @@ Pipeline Analysis Complete ${isDagEmoji}
 🔄 Is Valid DAG: ${isDagText}
 
 ${data.is_dag
-    ? '✅ Your pipeline is valid! It contains no circular dependencies.'
-    : '⚠️ Warning: Your pipeline contains circular dependencies and is not a valid DAG.'}
+                    ? '✅ Your pipeline is valid! It contains no circular dependencies.'
+                    : '⚠️ Warning: Your pipeline contains circular dependencies and is not a valid DAG.'}
             `.trim();
 
             alert(message);
 
         } catch (error) {
             console.error('Error submitting pipeline:', error);
-            alert(`❌ Error: Could not connect to backend.\n\nPlease ensure the backend server is running on http://localhost:8000\n\nError: ${error.message}`);
+            alert(`❌ Error: Could not connect to backend.\n\nError: ${error.message}`);
         } finally {
             setIsLoading(false);
         }
